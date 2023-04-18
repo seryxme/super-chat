@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "835950835552",
+    "project_id": "super-chat-ec589",
+    "storage_bucket": "super-chat-ec589.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835950835552:android:3cef38db17d5c6ab6e9005",
+        "android_client_info": {
+          "package_name": "com.seryxconcepts.super_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835950835552-re20dod2o9ep7kl4hah40e251nn15m1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3vNq1hkwPZdSdj1rbcjUgPzu3rxT-o88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835950835552-re20dod2o9ep7kl4hah40e251nn15m1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
