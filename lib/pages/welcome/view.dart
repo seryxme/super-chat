@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,7 @@ class WelcomePage extends GetView<WelcomeController>  {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+      body: Obx( () => SizedBox(
         width: 380.w,
         height: 760.w,
         child: Stack(
@@ -19,7 +20,7 @@ class WelcomePage extends GetView<WelcomeController>  {
               scrollDirection: Axis.horizontal,
               reverse: false,
               onPageChanged: (index) {
-
+                controller.changePage(index);
               },
               controller: PageController(
                 keepPage: false,
@@ -31,12 +32,12 @@ class WelcomePage extends GetView<WelcomeController>  {
                   width: double.infinity,
                   height: double.infinity,
                   decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(
-                        "assets/images/banner1.png"
-                      ),
-                    )
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage(
+                            "assets/images/banner1.png"
+                        ),
+                      )
                   ),
                 ),
                 Container(
@@ -67,30 +68,49 @@ class WelcomePage extends GetView<WelcomeController>  {
                     children: [
                       Positioned(
                         bottom: 50,
-                          child: ElevatedButton(
-                            onPressed: () {  },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.white),
-                              foregroundColor: MaterialStateProperty.all(Colors.black),
-                              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              ),
-                              side: MaterialStateProperty.all(
-                                const BorderSide(color: Colors.white)
-                              ),
+                        child: ElevatedButton(
+                          onPressed: () {  },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.white),
+                            foregroundColor: MaterialStateProperty.all(Colors.black),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
-                            child: const Text("Login"),
+                            ),
+                            side: MaterialStateProperty.all(
+                                const BorderSide(color: Colors.white)
+                            ),
                           ),
+                          child: const Text("Login"),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
-            )
+            ),
+            Positioned(
+              bottom: 25,
+              child: DotsIndicator(
+                position: controller.state.index.value.toDouble(),
+                dotsCount: 3,
+                reversed: false,
+                mainAxisAlignment: MainAxisAlignment.center,
+                decorator: DotsDecorator(
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeColor: Colors.deepPurple,
+                  activeShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       )
+
+      ),
     );
   }
 }
