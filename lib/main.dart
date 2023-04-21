@@ -5,9 +5,16 @@ import 'package:get/get.dart';
 import 'package:super_chat/firebase_options.dart';
 
 import 'common/routes/pages.dart';
+import 'common/services/storage.dart';
+import 'common/store/config.dart';
+import 'common/store/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync<StorageService>(() => StorageService().init());
+  Get.put<ConfigStore>(ConfigStore());
+  Get.put<UserStore>(UserStore());
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

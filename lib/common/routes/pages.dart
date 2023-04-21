@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../../pages/welcome/index.dart';
+import '../../pages/login/index.dart';
 import 'names.dart';
 
 class AppPages {
@@ -12,8 +13,13 @@ class AppPages {
   static List<GetPage> routes =[
     GetPage(
         name: AppRoutes.INITIAL,
-        page: () => WelcomePage(),
+        page: () => const WelcomePage(),
       binding: WelcomeBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.LOGIN,
+      page: () => LoginPage(),
+      binding: LoginBindings(),
     ),
   ];
 }
