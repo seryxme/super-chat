@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:super_chat/common/routes/names.dart';
@@ -25,6 +24,7 @@ class LoginController extends GetxController {
   Future<void> handleSignIn() async {
     try {
       var user = await _googleSignIn.signIn();
+      print(user);
       if (user != null) {
         final auth = await user.authentication;
         final credential = GoogleAuthProvider.credential(
@@ -43,6 +43,8 @@ class LoginController extends GetxController {
         userData.displayName = displayName;
         userData.email = email;
         userData.photoUrl = photoUrl;
+
+        print(userData);
 
         UserStore.to.saveProfile(userData);
         var userBase = await db.collection("users").withConverter(
@@ -70,7 +72,6 @@ class LoginController extends GetxController {
       }
     } catch(e) {
       toastInfo(message: "Error: Unable to log you in");
-      print(e);
     }
   }
 
@@ -79,7 +80,7 @@ class LoginController extends GetxController {
     super.onReady();
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print("User logged out");
+        print("User not logged in");
       } else {
         print("User logged in");
       }

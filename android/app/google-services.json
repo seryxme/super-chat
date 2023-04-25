@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "835950835552-re20dod2o9ep7kl4hah40e251nn15m1e.apps.googleusercontent.com",
+          "client_id": "835950835552-27e1fucghfbu7430a1p114sff41qgqku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seryxconcepts.super_chat",
+            "certificate_hash": "f021f8fa7491a1c8d088002ace2337e0a0c0ccf3"
+          }
+        },
+        {
+          "client_id": "835950835552-tn7bn2d0smrpdo27992cjmi1jsfkcm3g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -29,6 +37,13 @@
             {
               "client_id": "835950835552-re20dod2o9ep7kl4hah40e251nn15m1e.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "835950835552-1ku7joquplt5hhjf2ldjdn3kbcqkravl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.seryxconcepts.superChat"
+              }
             }
           ]
         }

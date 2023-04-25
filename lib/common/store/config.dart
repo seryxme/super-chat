@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../services/storage.dart';
+import '../values/values.dart';
 
 class ConfigStore extends GetxController {
   static ConfigStore get to => Get.find();
@@ -22,7 +23,7 @@ class ConfigStore extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isFirstOpen = StorageService.to.getBool("STORAGE_DEVICE_FIRST_OPEN_KEY");
+    isFirstOpen = StorageService.to.getBool(STORAGE_DEVICE_FIRST_OPEN_KEY);
   }
 
   Future<void> getPlatform() async {
@@ -30,10 +31,10 @@ class ConfigStore extends GetxController {
   }
 
   Future<bool> saveAlreadyOpen() {
-    return StorageService.to.setBool("STORAGE_DEVICE_FIRST_OPEN_KEY", true);
+    return StorageService.to.setBool(STORAGE_DEVICE_FIRST_OPEN_KEY, true);
   }
 
   void onInitLocale() {
-    var langCode = StorageService.to.getString("STORAGE_LANG_CODE");
+    var langCode = StorageService.to.getString(STORAGE_LANGUAGE_CODE);
   }
 }

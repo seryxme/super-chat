@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 import '../models/user.dart';
 import '../services/storage.dart';
+import '../values/values.dart';
 
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
@@ -21,8 +22,8 @@ class UserStore extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    token = StorageService.to.getString("STORAGE_USER_TOKEN_KEY");
-    var profileOffline = StorageService.to.getString("STORAGE_USER_PROFILE_KEY");
+    token = StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
+    var profileOffline = StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
     if (profileOffline.isNotEmpty) {
       _isLogin.value = true;
       _profile(UserLoginResponseData.fromJson(jsonDecode(profileOffline)));
@@ -31,23 +32,23 @@ class UserStore extends GetxController {
 
   Future<String> getProfile() async {
     if (token.isEmpty) return "";
-    return StorageService.to.getString("STORAGE_USER_PROFILE_KEY");
+    return StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
   }
 
   Future<void> setToken(String value) async {
-    await StorageService.to.setString("STORAGE_USER_TOKEN_KEY", value);
+    await StorageService.to.setString(STORAGE_USER_TOKEN_KEY, value);
     token = value;
   }
 
   Future<void> saveProfile(UserLoginResponseData profile) async {
     _isLogin.value = true;
-    StorageService.to.setString("STORAGE_USER_PROFILE_KEY", jsonEncode(profile));
+    StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
     setToken(profile.accessToken!);
   }
 
   Future<void> onLogout() async {
-    StorageService.to.remove("STORAGE_USER_TOKEN_KEY");
-    StorageService.to.remove("STORAGE_USER_PROFILE_KEY");
+    StorageService.to.remove(STORAGE_USER_TOKEN_KEY);
+    StorageService.to.remove(STORAGE_USER_PROFILE_KEY);
     _isLogin.value = true;
 
   }
