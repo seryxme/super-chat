@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../common/models/msgcontent.dart';
+import '../../../common/models/msgcontent.dart';
 
 class ChatState {
   RxList<MessageContent> msgContentList = <MessageContent>[].obs;

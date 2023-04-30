@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:super_chat/common/values/colors.dart';
-import 'package:super_chat/pages/contact/widgets/contact_list.dart';
-import '../../common/widgets/app.dart';
+import 'package:super_chat/pages/message/chat/widgets/chat_list.dart';
 import 'controller.dart';
 
 class ChatPage extends GetView<ChatController>  {
@@ -106,14 +105,70 @@ class ChatPage extends GetView<ChatController>  {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: _buildAppBar(),
-      body: Center(
-        child: Column(
-          children: [],
+      body: SafeArea(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints.expand(),
+          child: Stack(
+            children: [
+              const ChatList(),
+              Positioned(
+                bottom: 0.h,
+                height: 50.h,
+                  child: Container(
+                    width: 360.w,
+                    height: 50.h,
+                    color: AppColors.primaryBackground,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 217.w,
+                          height: 50.h,
+                          child: TextField(
+                            keyboardType: TextInputType.multiline,
+                            controller: controller.textController,
+                            maxLines: 3,
+                            autofocus: false,
+                            focusNode: controller.contentNode,
+                            decoration: const InputDecoration(
+                              hintText: "Send a Zing",
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 30.w,
+                          height: 30.w,
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: GestureDetector(
+                            child: Icon(
+                                Icons.photo_outlined,
+                              size: 35.w,
+                              color: Colors.deepPurple,
+                            ),
+                            onTap: () {},
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 10.w, top: 5.h),
+                          width: 65.w,
+                          height: 35.h,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              controller.sendMessage();
+                            },
+                            child: const Text("Zing"),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+              ),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

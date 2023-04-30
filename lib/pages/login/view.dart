@@ -35,7 +35,7 @@ class LoginPage extends GetView<LoginController>  {
                 ),
                   Positioned(
                     child: Image.asset(
-                      "assets/images/logo-transp.png",
+                      "assets/icons/logo-transp.png",
                       width: 76.w,
                       height: 76.w,
                       fit: BoxFit.cover,

@@ -75,14 +75,14 @@ class ContactController extends GetxController {
           "to_name": toUser.name ?? "",
           "to_avatar": toUser.photoUrl ?? "",
         });
-        if (sentMessages.docs.isNotEmpty) {
-          Get.toNamed("/chat", parameters: {
-            "doc_id": sentMessages.docs.first.id,
-            "to_uid": toUser.id ?? "",
-            "to_name": toUser.name ?? "",
-            "to_avatar": toUser.photoUrl ?? "",
-          });
-        }
+      }
+      if (sentMessages.docs.isNotEmpty) {
+        Get.toNamed("/chat", parameters: {
+          "doc_id": sentMessages.docs.first.id,
+          "to_uid": toUser.id ?? "",
+          "to_name": toUser.name ?? "",
+          "to_avatar": toUser.photoUrl ?? "",
+        });
       }
     }
   }
